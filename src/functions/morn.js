@@ -50,8 +50,8 @@ exports.morningCheck = async (info, read) => {
   })
   await read.question('疫苗接种是否已完成？(未接种\'1\'，未完成\'2\'，已完成\'3\'): ', (i) => {
     switch (i) {
-      case 2: info.jjymqk = '未完成接种'; break;
-      case 3: info.jjymqk = '已完成接种'; break;
+      case '2': info.jjymqk = '未完成接种'; break;
+      case '3': info.jjymqk = '已完成接种'; break;
       default: info.jjymqk = '未接种'
     }
   })
