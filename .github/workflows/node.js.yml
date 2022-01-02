@@ -1,8 +1,9 @@
 name: Node.js CI
 
 on:
+  push:
   schedule:
-    - cron:  '10 21 * * *'
+    - cron:  '25 17 * * *'
     # 使用的格林威治时间，比北京时间早8小时，如果设置早上07:25执行，则应写为 '25 23 * * *'
     # 具体cron语法 https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule
 
@@ -24,9 +25,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Run Health Report
       run: |
-        (npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 1 --data ${{secrets.MORNINFO}}) || \
-        (sleep 5m && npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 1 --data ${{secrets.MORNINFO}}) || \
-        (sleep 10m && npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 1 --data ${{secrets.MORNINFO}}) || \
-        (sleep 20m && npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 1 --data ${{secrets.MORNINFO}})
+        (npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 0 --data ${{secrets.HOMEINFO}}) || \
+        (sleep 5m && npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 0 --data ${{secrets.HOMEINFO}}) || \
+        (sleep 10m && npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 0 --data ${{secrets.HOMEINFO}}) || \
+        (sleep 20m && npm run action -- --username ${{secrets.ZZULI_USERNAME}} --password ${{secrets.ZZULI_PASSWORD}} --type 0 --data ${{secrets.HOMEINFO}})
     # 在校晨检设置 type 参数均为 1 ，data 参数均为 secrets.MORNINFO 
     # 居家填报设置 type 参数均为 0 ，data 参数均为 secrets.HOMEINFO
