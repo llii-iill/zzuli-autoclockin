@@ -8,7 +8,7 @@ const { readInfo } = require("./file")
     console.log('晨检：')
     console.log(CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(morn)))
   }
-  if(home>10){
+  if(home.length>10){
     console.log('居家：')
     console.log(CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(home)))
   }
